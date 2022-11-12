@@ -12,6 +12,7 @@ specifiers:
   react: ^18.2.0
   react-dom: ^18.2.0
   react-icons: ^4.6.0
+  react-in-viewport: 1.0.0-alpha.28
   typescript: ^4.6.4
   vite: ^3.2.3
 
@@ -24,6 +25,7 @@ dependencies:
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   react-icons: 4.6.0_react@18.2.0
+  react-in-viewport: 1.0.0-alpha.28_biqbaboplfbrettd7655fr4n2y
 
 devDependencies:
   '@types/react': 18.0.25
@@ -2222,6 +2224,17 @@ packages:
       react: '*'
     dependencies:
       react: 18.2.0
+    dev: false
+
+  /react-in-viewport/1.0.0-alpha.28_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-SjBVCPUIRfJb516BUev1u/dejBfI5jIcskDz4Irq2RezNG7D199eER8reRzZX+w/FLxz21rpdqRbJbagv5n37Q==}
+    peerDependencies:
+      react: ^16.8.3 || ^17.0.0 || ^18.0.0
+      react-dom: ^16.8.3 || ^17.0.0 || ^18.0.0
+    dependencies:
+      hoist-non-react-statics: 3.3.2
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
     dev: false
 
   /react-is/16.13.1:

@@ -1,4 +1,4 @@
-import { RiCompasses2Line } from 'react-icons/ri';
+import { BiCodeAlt } from 'react-icons/bi';
 
 import {
   ChevronDownIcon,
@@ -71,15 +71,14 @@ export const Navigation = function () {
               left={'0%'}
               zIndex={-1}
               color={useColorModeValue('red.100', 'red.400')}></Blob>
-            <Box>&lt;</Box>
             <Box p={3}>
-              <Icon as={RiCompasses2Line} w={6} h={6} />
+              <Icon className='shake-vertical' as={BiCodeAlt} w={8} h={8} />
             </Box>
             <Stack spacing={'0'}>
-              <Text as={'b'} fontSize={{base: 'xs', md: 'md'}}>Madhu</Text>
-              <Text fontSize={{base: 'xs', md: 'sm'}}>MEAN Stack</Text>
+              <Text as={'b'} fontSize={{ base: 'xs', md: 'md' }}>Madhu</Text>
+              <Text fontSize={{ base: 'xs', md: 'sm' }}>Developer</Text>
             </Stack>
-            <Box pl={3}>&gt;</Box>
+            {/* <Box pl={3}>&gt;</Box> */}
           </Flex>
           <Spacer />
           <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
@@ -192,12 +191,15 @@ const MobileNav = () => {
 const MobileNavItem = ({ label, children, href }: NavItem) => {
   const { isOpen, onToggle } = useDisclosure();
 
+  const handleClick = (id: string) => {
+    document.getElementById(id.indexOf('#') == 0 ? id.substring(1) : id)?.scrollIntoView({ behavior: 'smooth' });
+  }
   return (
     <Stack spacing={4} onClick={children && onToggle}>
       <Flex
         py={2}
         as={Link}
-        href={href ?? '#'}
+        onTouchStart={(evt) => handleClick(href ?? '#')}
         justify={'space-between'}
         align={'center'}
         _hover={{
@@ -211,6 +213,7 @@ const MobileNavItem = ({ label, children, href }: NavItem) => {
         {children && (
           <Icon
             as={ChevronDownIcon}
+            onTouchStart={(evt) => evt.stopPropagation()}
             transition={'all .25s ease-in-out'}
             transform={isOpen ? 'rotate(180deg)' : ''}
             w={6}
@@ -219,9 +222,8 @@ const MobileNavItem = ({ label, children, href }: NavItem) => {
         )}
       </Flex>
 
-      <Collapse in={isOpen} animateOpacity style={{ marginTop: '0!important' }}>
+      <Collapse in={isOpen} animateOpacity style={{ marginTop: '0' }}>
         <Stack
-          mt={2}
           pl={4}
           borderLeft={1}
           borderStyle={'solid'}
@@ -229,7 +231,7 @@ const MobileNavItem = ({ label, children, href }: NavItem) => {
           align={'start'}>
           {children &&
             children.map((child, i) => (
-              <Link key={child.label + "-" + i} py={2} href={child.href}>
+              <Link onTouchStart={(evt) => handleClick(child.href ?? '#')} key={child.label + "-" + i} py={2}>
                 {child.label}
               </Link>
             ))}
@@ -239,15 +241,17 @@ const MobileNavItem = ({ label, children, href }: NavItem) => {
   );
 };
 
-function HoverMenu(navItem: NavItem, linkColor: string, linkHoverColor: string, popoverContentBgColor: string, i:number): JSX.Element {
+function HoverMenu(navItem: NavItem, linkColor: string, linkHoverColor: string, popoverContentBgColor: string, i: number): JSX.Element {
   const [hover, setHover] = useBoolean()
-
+  const handleClick = (id: string) => {
+    document.getElementById(id.indexOf('#') == 0 ? id.substring(1) : id)?.scrollIntoView({ behavior: 'smooth' });
+  }
   return <Box key={navItem.label + "-" + i} position={'relative'} zIndex={2} onMouseEnter={setHover.on} onMouseLeave={setHover.off}>
     <Popover trigger={'hover'} placement={'bottom-start'}>
       <PopoverTrigger>
-        <Link
+        {navItem.isExternal ? <Link
           p={2}
-          href={navItem.href ?? '#'}
+          href={navItem.href} isExternal
           fontSize={'sm'}
           fontWeight={500}
           color={linkColor}
@@ -256,7 +260,18 @@ function HoverMenu(navItem: NavItem, linkColor: string, linkHoverColor: string, 
             color: linkHoverColor,
           }}>
           {navItem.label}
-        </Link>
+        </Link> : <Link
+          p={2}
+          onClick={(evt) => handleClick(navItem.href ?? '#')}
+          fontSize={'sm'}
+          fontWeight={500}
+          color={linkColor}
+          _hover={{
+            textDecoration: 'none',
+            color: linkHoverColor,
+          }}>
+          {navItem.label}
+        </Link>}
       </PopoverTrigger>
 
       {navItem.children && (
@@ -270,7 +285,7 @@ function HoverMenu(navItem: NavItem, linkColor: string, linkHoverColor: string, 
           <PopoverArrow />
           <Stack>
             {navItem.children.map((child, i) => (
-              <DesktopSubNav key={child.label + "-" +i} {...child} />
+              <DesktopSubNav key={child.label + "-" + i} {...child} />
             ))}
           </Stack>
         </PopoverContent>

@@ -5,6 +5,7 @@ export interface NavItem {
     subLabel?: string;
     children?: Array<NavItem>;
     href?: string;
+    isExternal?: boolean;
 }
 
 export const NAV_ITEMS: Array<NavItem> = [
@@ -13,24 +14,17 @@ export const NAV_ITEMS: Array<NavItem> = [
         href: '#Skills'
     },
     {
-        label: 'Work Experience',
+        label: 'Experience',
         href: '#Work',
         children: workExperience.map((company) => ({ label: company.name, subLabel: company.location, href: `#${company.name}-${company.location}` }))
-        //   [
-        //     {
-        //       label: 'Job Board',
-        //       subLabel: 'Find your dream design job',
-        //       href: '#',
-        //     },
-        //     {
-        //       label: 'Freelance Projects',
-        //       subLabel: 'An exclusive list for contract work',
-        //       href: '#',
-        //     },
-        //   ],
     },
     {
-        label: 'Personal Projects',
+        label: 'Projects',
         href: '#GitProjects',
+    },
+    {
+        label: 'Resume',
+        href: '/resume.pdf',
+        isExternal: true
     }
 ];

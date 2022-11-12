@@ -10,13 +10,15 @@ export const skillSet: Array<SkillSet> = [{
     certified: true
 }, {
     label: 'Angular',
-    scale: 4
+    scale: 4,
+    certified: true
 }, {
     label: 'Node',
     scale: 4
 }, {
     label: 'Adv JS',
-    scale: 4
+    scale: 4,
+    certified: true
 }, {
     label: 'React',
     scale: 3.5
@@ -45,15 +47,15 @@ export const skillSet: Array<SkillSet> = [{
     label: 'Ionic',
     scale: 3
 }, {
-    label: 'Electron',
-    scale: 3
+    label: 'Agile',
+    scale: 4
 }, {
-    label: 'LibGdx(2d Games)',
-    scale: 3
+    label: 'HTML',
+    scale: 4.5
 }, {
-    label: 'Velocity',
-    scale: 3.5
+    label: 'CSS',
+    scale: 4.5
 }, {
-    label: 'Ruby On Rails',
-    scale: 3.5
+    label: 'Swagger',
+    scale: 4
 }];

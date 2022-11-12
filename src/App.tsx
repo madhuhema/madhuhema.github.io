@@ -2,6 +2,7 @@ import { Box, ChakraProvider, Heading, SimpleGrid, Stack } from "@chakra-ui/reac
 import Home from "./pages/Home"
 
 function App() {
+
   return (
     <ChakraProvider>
       <Home />
