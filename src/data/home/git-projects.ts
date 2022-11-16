@@ -4,6 +4,7 @@ export type GitProject = {
     description: string,
     techStack: string,
     link?: string,
+    demo?: string,
     competition: boolean,
     interface?: string
 }
@@ -60,9 +61,9 @@ export const gitProjects: Array<GitProject> = [{
 {
     name: `My tasks`,
     link: `https://github.com/madhuhema/react-myTasks`,
+    demo: 'http://react-tasks.madhuvanthi.com',
     repoName: `react-myTasks`,
     techStack: `React, Typescript, Node JS`,
     description: `A simple todo list react application to create/update/delete/track daily tasks`,
     competition: true
-},
-]
+}]
