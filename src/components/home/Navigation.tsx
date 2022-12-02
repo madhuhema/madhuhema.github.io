@@ -25,6 +25,7 @@ import {
   useColorModeValue,
   useDisclosure,
 } from '@chakra-ui/react';
+import {FiGithub, FiLinkedin} from 'react-icons/fi'
 
 import {
   NAV_ITEMS,
@@ -91,9 +92,9 @@ export const Navigation = function () {
           justify={'flex-end'}
           direction={'row'}
           spacing={6}>
-          <Button
+          <IconButton
             as={'a'}
-            fontSize={'sm'}
+            fontSize={'lg'}
             display={{ base: 'none', md: 'inline-flex' }}
             fontWeight={400}
             colorScheme={'blue'}
@@ -101,12 +102,12 @@ export const Navigation = function () {
             _hover={{ bg: 'blue.600' }}
             href={'https://www.linkedin.com/in/madhuvanthi-hemanathan-54798a148/'}
             target={'_blank'}
-          >
-            LinkedIn
-          </Button>
-          <Button
+            aria-label='linkedIn'
+            icon={<FiLinkedin/>}
+          />
+          <IconButton
             as={'a'}
-            fontSize={'sm'}
+            fontSize={'lg'}
             display={{ base: 'none', md: 'inline-flex' }}
             fontWeight={600}
             colorScheme={'purple'}
@@ -114,9 +115,9 @@ export const Navigation = function () {
             _hover={{ bg: 'purple.500' }}
             href={'https://github.com/madhuhema'}
             target={'_blank'}
-          >
-            GitHub
-          </Button>
+            aria-label='github'
+            icon={<FiGithub/>}
+          />
         </Stack>
       </Flex>
 

@@ -57,7 +57,7 @@ export function Work({ }: Props) {
                                 <Badge bgColor={'red.50'}>{`${formatDate(company.startDate)}-${company.endDate ? formatDate(company.endDate) : 'present'}`}</Badge>
                             </Flex>
                             <Divider pt="3" />
-                            <SimpleGrid p={3} columns={{ base: 1, md: 2 }} spacing={{ base: 5, lg: 8 }}>
+                            <SimpleGrid p={10} columns={{ base: 1, md: 2 }} spacing={{ base: 5, lg: 8 }}>
                                 {company.projects.map((project, j) =>
                                     <SlideFade
                                         in={isInView}
